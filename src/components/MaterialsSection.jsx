@@ -47,9 +47,11 @@ export default function MaterialsSection({ rows, onChange }) {
                 </span>
               </div>
               <div className="form-group line-item-desc">
+                <label htmlFor={`mat-name-${row.id}`}>Item Name</label>
                 <input
+                  id={`mat-name-${row.id}`}
                   type="text"
-                  placeholder="Item name"
+                  placeholder="e.g. Primer, rollers, tape"
                   value={row.name}
                   onChange={(e) => updateRow(row.id, 'name', e.target.value)}
                   autoComplete="off"
@@ -57,13 +59,14 @@ export default function MaterialsSection({ rows, onChange }) {
               </div>
               <div className="line-item-fields line-item-fields-materials">
                 <div className="form-group">
-                  <label>Qty</label>
+                  <label htmlFor={`mat-qty-${row.id}`}>Qty</label>
                   <input
+                    id={`mat-qty-${row.id}`}
                     type="number"
                     inputMode="decimal"
                     placeholder="0"
                     min="0"
-                    step="1"
+                    step="0.5"
                     value={row.quantity}
                     onChange={(e) =>
                       updateRow(row.id, 'quantity', e.target.value)
@@ -71,8 +74,9 @@ export default function MaterialsSection({ rows, onChange }) {
                   />
                 </div>
                 <div className="form-group">
-                  <label>Unit Cost</label>
+                  <label htmlFor={`mat-cost-${row.id}`}>Unit Cost</label>
                   <input
+                    id={`mat-cost-${row.id}`}
                     type="number"
                     inputMode="decimal"
                     placeholder="0.00"
@@ -85,8 +89,9 @@ export default function MaterialsSection({ rows, onChange }) {
                   />
                 </div>
                 <div className="form-group">
-                  <label>Markup %</label>
+                  <label htmlFor={`mat-markup-${row.id}`}>Markup %</label>
                   <input
+                    id={`mat-markup-${row.id}`}
                     type="number"
                     inputMode="decimal"
                     placeholder="0"
@@ -99,12 +104,12 @@ export default function MaterialsSection({ rows, onChange }) {
                   />
                 </div>
               </div>
-              <div style={{ textAlign: 'right', marginTop: '8px' }}>
+              <div className="line-item-actions">
                 <button
                   className="delete-btn"
                   onClick={() => deleteRow(row.id)}
                   type="button"
-                  aria-label="Delete material item"
+                  aria-label={`Remove material item ${idx + 1}`}
                 >
                   Remove
                 </button>

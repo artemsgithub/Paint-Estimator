@@ -33,7 +33,7 @@ html {
   font-size: 16px;
   line-height: 1.5;
   color: var(--gray-800);
-  background-color: var(--gray-50);
+  background-color: var(--gray-100);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -44,12 +44,23 @@ body {
 
 #root {
   min-height: 100vh;
-  padding-bottom: 100px; /* space for sticky summary */
+  padding-bottom: 80px; /* space for collapsed sticky summary */
 }
 
 input,
 button,
-select {
+select,
+textarea {
   font-family: inherit;
-  font-size: inherit;
+}
+
+/* Remove number input spinners for cleaner look */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
 }

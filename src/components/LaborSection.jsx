@@ -44,9 +44,11 @@ export default function LaborSection({ rows, onChange }) {
                 </span>
               </div>
               <div className="form-group line-item-desc">
+                <label htmlFor={`labor-desc-${row.id}`}>Description</label>
                 <input
+                  id={`labor-desc-${row.id}`}
                   type="text"
-                  placeholder="Task description"
+                  placeholder="e.g. Interior walls, trim work"
                   value={row.description}
                   onChange={(e) =>
                     updateRow(row.id, 'description', e.target.value)
@@ -56,8 +58,9 @@ export default function LaborSection({ rows, onChange }) {
               </div>
               <div className="line-item-fields line-item-fields-labor">
                 <div className="form-group">
-                  <label>Hours</label>
+                  <label htmlFor={`labor-hours-${row.id}`}>Hours</label>
                   <input
+                    id={`labor-hours-${row.id}`}
                     type="number"
                     inputMode="decimal"
                     placeholder="0"
@@ -70,8 +73,9 @@ export default function LaborSection({ rows, onChange }) {
                   />
                 </div>
                 <div className="form-group">
-                  <label>Rate ($/hr)</label>
+                  <label htmlFor={`labor-rate-${row.id}`}>Rate ($/hr)</label>
                   <input
+                    id={`labor-rate-${row.id}`}
                     type="number"
                     inputMode="decimal"
                     placeholder="0.00"
@@ -84,12 +88,12 @@ export default function LaborSection({ rows, onChange }) {
                   />
                 </div>
               </div>
-              <div style={{ textAlign: 'right', marginTop: '8px' }}>
+              <div className="line-item-actions">
                 <button
                   className="delete-btn"
                   onClick={() => deleteRow(row.id)}
                   type="button"
-                  aria-label="Delete labor item"
+                  aria-label={`Remove labor item ${idx + 1}`}
                 >
                   Remove
                 </button>
